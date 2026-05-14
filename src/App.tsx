@@ -10,7 +10,6 @@ import GameView from './pages/GameView';
 import Profile from './pages/Profile';
 import Achievements from './pages/Achievements';
 import SettingsPage from './pages/SettingsPage';
-import Leaderboard from './pages/Leaderboard';
 import Quiz from './pages/Quiz';
 import Subscription from './pages/Subscription';
 
@@ -33,7 +32,6 @@ function App() {
           <Route path="/levels" element={<Levels />} />
           <Route path="/subscription" element={<Subscription />} />
           <Route path="/play/:levelId" element={<GameView />} />
-          <Route path="/leaderboard" element={<Leaderboard />} />
           <Route path="/quiz" element={<Quiz />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/achievements" element={<Achievements />} />

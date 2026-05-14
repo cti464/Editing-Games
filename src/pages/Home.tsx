@@ -82,8 +82,7 @@ export default function Home() {
         </motion.div>
 
         <motion.div 
-          onClick={() => navigate('/leaderboard')}
-          className="bg-slate-900/50 border border-slate-800 rounded-2xl p-6 backdrop-blur-sm relative overflow-hidden cursor-pointer group"
+          className="bg-slate-900/50 border border-slate-800 rounded-2xl p-6 backdrop-blur-sm relative overflow-hidden group"
           whileHover={{ y: -5, scale: 1.02 }}
         >
           <div className="absolute inset-0 bg-emerald-500/0 group-hover:bg-emerald-500/5 transition-colors" />

@@ -13,7 +13,6 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
     { name: 'Dashboard', path: '/', icon: LayoutDashboard },
     { name: 'Levels', path: '/levels', icon: PlaySquare },
     { name: 'Quiz', path: '/quiz', icon: HelpCircle },
-    { name: 'Leaderboard', path: '/leaderboard', icon: BarChart2 },
     { name: 'Profile', path: '/profile', icon: User },
   ];
 

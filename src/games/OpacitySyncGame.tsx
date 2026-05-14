@@ -49,70 +49,83 @@ export function OpacitySyncGame({ targetConfig, onComplete, timeRemaining, title
   }, [timeRemaining, submitted]);
 
   return (
-    <div className="flex flex-col gap-4 md:gap-8 w-full max-w-4xl mx-auto p-4 md:p-8 bg-slate-900 border border-slate-800 rounded-3xl shadow-2xl relative">
-      <div className="text-center mb-2 md:mb-4">
-        <h3 className="text-white font-bold text-lg md:text-2xl uppercase tracking-wider mb-2">{title}</h3>
+    <div className="flex flex-col gap-4 md:gap-8 w-full max-w-4xl mx-auto p-4 md:p-8 bg-[#18181b] border border-zinc-800 rounded-lg shadow-2xl relative font-sans">
+      <div className="text-left mb-2 md:mb-4 border-b border-zinc-800 pb-4">
+        <h3 className="text-zinc-100 font-semibold text-lg md:text-xl uppercase tracking-widest flex items-center justify-between">
+          <span>{title}</span>
+          <span className="text-xs text-zinc-500 font-mono tracking-normal">COMPOSITOR_V1.0</span>
+        </h3>
         {submitted ? (
-           <div className="mt-2 text-base md:text-xl font-black text-white bg-slate-800 inline-block px-4 py-2 rounded-lg border border-slate-700">
+           <div className="mt-4 text-sm font-bold text-amber-400 bg-amber-400/10 inline-block px-3 py-1 rounded border border-amber-400/20 uppercase tracking-widest">
              {feedback}
            </div>
         ) : (
-           <p className="text-slate-400 text-sm md:text-base">{description}</p>
+           <p className="text-zinc-400 text-sm mt-2">{description}</p>
         )}
       </div>
 
-      <div className="flex flex-col lg:flex-row gap-4 lg:gap-8 justify-center">
+      <div className="flex flex-col lg:flex-row gap-4 justify-center">
         {/* Target */}
-        <div className="flex flex-col gap-2 flex-1">
-           <h4 className="text-slate-400 text-sm font-bold uppercase text-center">Reference</h4>
-           <div className="aspect-video bg-slate-800 rounded-2xl relative overflow-hidden bg-[url('https://transparenttextures.com/patterns/black-scales.png')] border-4 border-slate-700">
+        <div className="flex flex-col gap-1 flex-1">
+           <h3 className="text-zinc-400 font-mono text-[10px] uppercase tracking-wider flex items-center justify-between bg-black px-2 py-1 border border-zinc-800 border-b-0 rounded-t-lg">
+             <span className="text-zinc-500">Node:</span> Reference
+           </h3>
+           <div className="aspect-video bg-black rounded-b-lg relative overflow-hidden bg-[url('https://transparenttextures.com/patterns/black-scales.png')] border border-zinc-800">
              {/* Base layer */}
              {imageUrl ? (
                <img src={imageUrl} alt="base" className="absolute inset-0 w-full h-full object-cover" />
              ) : (
-               <div className="absolute inset-0 bg-blue-900/50 flex items-center justify-center">
-                  <span className="text-blue-200/50 font-black text-8xl blur-sm">BASE</span>
+               <div className="absolute inset-0 bg-zinc-900 flex items-center justify-center">
+                  <span className="text-zinc-800 font-black text-8xl blur-sm">BASE</span>
                </div>
              )}
              {/* Target Overlay layer */}
              <div 
-               className="absolute inset-0 bg-rose-500 mix-blend-screen flex items-center justify-center"
+               className="absolute inset-0 bg-red-500 mix-blend-screen flex items-center justify-center"
                style={{ opacity: targetConfig.opacity / 100 }}
              >
-                <Layers className="w-32 h-32 text-white" />
+                <Layers className="w-24 h-24 text-white" />
              </div>
+             <div className="absolute top-2 left-2 text-[10px] font-mono text-zinc-500 bg-black/60 px-1 backdrop-blur rounded-sm">V1: REF</div>
            </div>
         </div>
 
         {/* User Edit */}
-        <div className="flex flex-col gap-2 flex-1">
-           <h4 className="text-cyan-400 text-sm font-bold uppercase text-center">Your Composition</h4>
-           <div className="aspect-video bg-slate-800 rounded-2xl relative overflow-hidden bg-[url('https://transparenttextures.com/patterns/black-scales.png')] border-4 border-cyan-500/50 shadow-[0_0_20px_rgba(6,182,212,0.2)]">
+        <div className="flex flex-col gap-1 flex-1">
+           <h3 className="text-zinc-400 font-mono text-[10px] uppercase tracking-wider flex items-center justify-between bg-black px-2 py-1 border border-zinc-800 border-b-0 rounded-t-lg">
+              <span className="text-amber-500">Node:</span> Active Comp
+           </h3>
+           <div className="aspect-video bg-black rounded-b-lg relative overflow-hidden bg-[url('https://transparenttextures.com/patterns/black-scales.png')] border border-zinc-800 shadow-[0_0_20px_rgba(0,0,0,0.5)]">
              {/* Base layer */}
              {imageUrl ? (
                <img src={imageUrl} alt="base" className="absolute inset-0 w-full h-full object-cover" />
              ) : (
-               <div className="absolute inset-0 bg-blue-900/50 flex items-center justify-center">
-                  <span className="text-blue-200/50 font-black text-8xl blur-sm">BASE</span>
+               <div className="absolute inset-0 bg-zinc-900 flex items-center justify-center">
+                  <span className="text-zinc-800 font-black text-8xl blur-sm">BASE</span>
                </div>
              )}
              {/* Edit Overlay layer */}
              <div 
-               className="absolute inset-0 bg-rose-500 mix-blend-screen flex items-center justify-center transition-opacity"
+               className="absolute inset-0 bg-red-500 mix-blend-screen flex items-center justify-center transition-opacity"
                style={{ opacity: opacity / 100 }}
              >
-                <Layers className="w-32 h-32 text-white" />
+                <Layers className="w-24 h-24 text-white" />
              </div>
+             <div className="absolute top-2 left-2 text-[10px] font-mono text-amber-500 bg-black/60 px-1 backdrop-blur rounded-sm">V2: OUT</div>
            </div>
         </div>
       </div>
 
       {/* Editor Controls */}
-      <div className="flex flex-col items-center mt-6 gap-6 w-full max-w-md mx-auto">
-        <div className="w-full relative">
-           <div className="flex justify-between mb-2">
-             <span className="text-slate-400 font-bold uppercase text-sm">Effect Opacity</span>
-             <span className="text-cyan-400 font-mono text-sm">{opacity}%</span>
+      <div className="flex flex-col mt-4 bg-black p-4 border border-zinc-800 rounded-lg w-full max-w-2xl mx-auto">
+        <div className="text-zinc-500 text-[10px] font-mono uppercase tracking-widest border-b border-zinc-800 pb-2 mb-4">
+          Layer Properties
+        </div>
+        
+        <div className="w-full relative flex flex-col gap-2 p-2 border border-zinc-800/50 rounded-lg bg-zinc-900/50 mb-6">
+           <div className="flex justify-between items-center text-[10px] font-mono uppercase">
+             <span className="font-bold text-zinc-300">Blend Opacity</span>
+             <span className="text-amber-400">{opacity}%</span>
            </div>
            <input 
              type="range" 
@@ -123,25 +136,34 @@ export function OpacitySyncGame({ targetConfig, onComplete, timeRemaining, title
              onChange={(e) => {
                setOpacity(parseInt(e.target.value));
              }}
-             className="w-full h-3 rounded-lg appearance-none cursor-pointer bg-slate-800 accent-cyan-500 border border-slate-700"
+             className="w-full h-1.5 rounded-full appearance-none cursor-pointer bg-zinc-800 accent-amber-500 slider-thumb"
            />
         </div>
 
-         <button
-            onClick={() => {
-              playSound('click');
-              checkMatch();
-            }}
-            disabled={submitted}
-            className="w-full bg-cyan-600 hover:bg-cyan-500 text-white font-black text-xl py-4 px-12 rounded-2xl shadow-[0_0_15px_rgba(6,182,212,0.4)] transition-all transform active:scale-95 disabled:opacity-50 disabled:pointer-events-none uppercase tracking-widest border border-cyan-400"
-          >
-            Apply Blend
-         </button>
-         {submitted && finalDiff !== null && (
-            <div className="text-xs font-mono text-slate-400 text-center">
-               Diff score: {finalDiff} / {targetConfig.tolerance} max
-            </div>
-         )}
+        <div className="flex justify-between items-center pt-2 mt-auto border-t border-zinc-800">
+           <div className="w-1/3">
+             {submitted && finalDiff !== null && (
+                <div className="text-[10px] font-mono text-zinc-500 uppercase">
+                   Delta: {finalDiff}% | Max Allowed: {targetConfig.tolerance}%
+                </div>
+             )}
+           </div>
+           <button
+              onClick={() => {
+                playSound('click');
+                checkMatch();
+              }}
+              disabled={submitted}
+              className="bg-zinc-800 hover:bg-zinc-700 text-zinc-100 font-mono text-xs py-2 px-8 transition-colors rounded disabled:opacity-50 disabled:pointer-events-none uppercase tracking-widest border border-zinc-600 focus:outline-none"
+            >
+              Apply Composite
+           </button>
+           <div className="w-1/3 flex justify-end">
+             <div className="px-3 py-1 bg-black border border-zinc-800 font-mono text-[10px] text-zinc-500 flex gap-2">
+               <span>BLEND: SCREEN</span>
+             </div>
+           </div>
+        </div>
       </div>
     </div>
   );
