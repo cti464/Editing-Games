@@ -37,9 +37,9 @@ export default function Profile() {
     <div className="h-full flex flex-col max-w-5xl mx-auto pb-10">
       <h1 className="text-4xl font-black text-white tracking-tight mb-8">Editor Profile</h1>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 gap-6">
         {/* Main Card */}
-        <div className="md:col-span-2 bg-slate-900 border border-slate-800 rounded-3xl p-8 relative overflow-hidden backdrop-blur-xl">
+        <div className="bg-slate-900 border border-slate-800 rounded-3xl p-8 relative overflow-hidden backdrop-blur-xl">
            <div className="absolute top-0 right-0 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl -mr-10 -mt-10" />
            <div className="relative z-10 flex items-center gap-6 mb-8 group/header">
              <div className="relative">
@@ -127,27 +127,6 @@ export default function Profile() {
                  <Zap className="w-6 h-6 text-rose-400 mb-2" />
                  <span className="text-2xl font-black text-white">{energy} <span className="text-sm text-slate-500">/ {maxEnergy}</span></span>
                  <span className="text-xs text-slate-500 font-bold uppercase tracking-wider">Energy</span>
-              </div>
-           </div>
-        </div>
-
-        {/* Side Panel */}
-        <div className="flex flex-col gap-6">
-           <div className="bg-gradient-to-br from-indigo-900 to-purple-900 border border-purple-500/30 rounded-3xl p-6 relative overflow-hidden group hover:border-purple-500/50 transition-colors">
-              <div className="absolute inset-0 bg-[url('https://transparenttextures.com/patterns/cubes.png')] opacity-10 mix-blend-overlay" />
-              <Activity className="w-8 h-8 text-purple-300 mb-4" />
-              <h3 className="text-xl font-bold text-white mb-2">Editor Rank</h3>
-              <div className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-pink-300 drop-shadow-lg">
-                Junior Cutter
-              </div>
-              <p className="text-purple-200/60 text-sm mt-4">Rank up at level 10 to unlock new profile frames.</p>
-           </div>
-           
-           <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6">
-              <h3 className="text-white font-bold mb-4">Inventory</h3>
-              <div className="flex flex-col items-center justify-center py-8 text-center bg-slate-950 rounded-xl border border-slate-800 border-dashed">
-                 <div className="text-slate-600 mb-2">No items yet</div>
-                 <p className="text-xs text-slate-500">Buy themes and tools in the shop coming soon.</p>
               </div>
            </div>
         </div>
